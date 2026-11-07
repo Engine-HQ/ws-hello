@@ -1,0 +1,12 @@
+# ws-hello — Execution Road T-P3-18 test app: serves the checked-out commit SHA on :8080.
+services:
+  hello:
+    image: busybox:1.36
+    mem_limit: 32m
+    working_dir: /src
+    volumes:
+      - ./:/src:ro
+    command: ["sh", "/src/serve.sh"]
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
